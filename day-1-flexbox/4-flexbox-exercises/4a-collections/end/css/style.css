@@ -81,6 +81,13 @@ figure img {
     object-position: 0 -150px;
 }
 
+/* since we are not using flex here, we are giving position as absolute
+In the below code between figure and figure caption there is a small border that is appearing, so we are giving margin-botton: -4px to cover that gap.
+We are also giving object-fit: cover; and objet-position: 0 -150px; */
+/* This is because when we have the max height as 400px,
+ because of which Sometimes the bottom of the image will be cut and not be shown, 
+ but the bottom image might have the most interesting thing in the image, so by giving  object-fit: cover, object-position: -150px,
+  we will be shoiwing the bottom interesting part incase if the image gets cut and will remove the less interesting ones of the image. */
 figcaption {
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 1.875rem;
@@ -142,13 +149,19 @@ figcaption a {
 
 
 /* turn on flexbox here - prior to this, elements stacked individually as blocks */
+/* In the below code for mobile we are giving object-position: 0; to turn off the inherited one from the desktop css.
+Becuase in mobile if we give object-poisition : 0 -150px;
 
+the bottom of the image will be removed in mobile.
+
+So to avoid this we are giving object-position: 0 */
 @media (min-width: 550px) {
     section ul {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
     }
+    /* since we need two boxes for mobile */
     section li {
         flex-basis: 49.5%;
     }
@@ -162,6 +175,7 @@ figcaption a {
     section h2 {
         margin-left: 100px;
     }
+    /* since we need three boxes for tablet */
     section li {
         flex-basis: 32.5%;
     }
